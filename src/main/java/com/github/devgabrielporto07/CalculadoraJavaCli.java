@@ -30,7 +30,7 @@ public class CalculadoraJavaCli {
         final String AZUL = "\u001B[34m";
 
         // Idealização de uma calculadora (Saídas para exibição) + palavra-chave para Inicialização junto com alguns métodos java:
-        // A ideia do uso de tratamento em java como toUppercase, trim, replace foi mais para aprendizado em si porque se eu quero que o usuário realmente digite da forma JAVA mesmo então
+        // A ideia do uso de tratamento em java como toUppercase, trim, replace foi mais para aprendizado em si porque se eu quero que o usuário realmente digite da forma JAVA mesmo então era apenas restrição mesmo
         System.out.print("\nDigite seu nome: ");
         String nameUser = scanner.nextLine();
         nameUser = nameUser.toUpperCase().trim();
@@ -65,6 +65,8 @@ public class CalculadoraJavaCli {
         if (palavraInicializacao.equals("JAVA")) {
             exibicaoCalculadora();
             // Futuras alterações aqui implementação da lógica real
+            System.out.print("Qual a operação que você deseja fazer? obs (digite de acordo com os símbolos exibidos na calculadora: ");
+            String escolhaOperacao = scanner.next();
         }
         scanner.close();
     }
