@@ -128,3 +128,15 @@ PalavraInicializacao para validar a palavra de acesso.
 
 Essa organizacao permite entender, testar e evoluir cada parte sem colocar
 todo o programa dentro de uma unica classe.
+
+Não: Maven não é um framework. É uma ferramenta de build e gerenciamento de dependências. Ele não fornece a estrutura da aplicação como um framework faria; coordena tarefas do projeto usando as ferramentas do Java.
+
+Uma analogia:
+
+JDK 21 é a caixa de ferramentas: inclui o javac, que compila o código Java, e ferramentas para executá-lo.
+Maven é quem lê as instruções do projeto no pom.xml e organiza as etapas: compilar, testar e empacotar.
+Framework, como Flutter, oferece estruturas e recursos para construir a própria aplicação.
+
+mvn clean: limpa os arquivos gerados.
+mvn compile: compila o código, usando o compilador Java.
+mvn clean package: limpa, compila, executa as etapas de teste configuradas e empacota o projeto, geralmente como .jar.
