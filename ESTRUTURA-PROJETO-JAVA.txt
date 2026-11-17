@@ -1,0 +1,130 @@
+ESTRUTURA DO PROJETO JAVA
+=========================
+
+MAVEN E COMPILADOR
+------------------
+Maven nao e o compilador Java. Maven e uma ferramenta de build: ele organiza
+etapas como limpar arquivos gerados, compilar o codigo, executar testes e
+empacotar o projeto.
+
+Durante a compilacao, Maven usa ferramentas do JDK, incluindo o compilador
+Java (javac), para transformar arquivos .java em arquivos .class, que contem
+bytecode executado pela JVM.
+
+O Java 21 instalado no computador e o JDK que fornece essas ferramentas. O
+IntelliJ e o Maven precisam estar configurados para usar esse JDK quando o
+projeto exige Java 21.
+
+ARQUIVOS E PASTAS DO PROJETO
+----------------------------
+O projeto Maven e a pasta que contem o arquivo pom.xml. Nesta estrutura,
+ela e projeto-calculadora-java-cli.
+
+projeto-calculadora-java-cli/
+|
+|-- .git/                 Informacoes internas do Git e historico do repositorio.
+|-- .idea/                Configuracoes do projeto para o IntelliJ IDEA.
+|-- .mvn/                 Pasta auxiliar do Maven. Nesta copia, esta vazia;
+|                         os scripts do Maven Wrapper nao estao presentes.
+|-- src/
+|   |-- main/
+|   |   |-- java/
+|   |   |   |-- com/github/devgabrielporto07/
+|   |   |       |-- Main.java
+|   |   |       |-- Nome.java
+|   |   |       |-- Saudacao.java
+|   |   |       |-- PalavraInicializacao.java
+|   |   |       |-- ExibicaoCalculadora.java
+|   |   |       |-- Cores.java
+|   |   |       |-- LogicaCalculadora.java
+|   |   |-- resources/    Arquivos de apoio usados pelo programa, se houver.
+|   |-- test/
+|       |-- java/         Local para os testes automatizados.
+|-- target/               Arquivos gerados pelo Maven durante a compilacao.
+|-- .gitignore            Lista de arquivos e pastas que o Git deve ignorar.
+|-- LICENSE               Termos da licenca do projeto.
+|-- pom.xml               Configuracao do projeto Maven.
+|-- README.md             Apresentacao e instrucoes do projeto.
+
+PASTAS IMPORTANTES
+------------------
+src/main/java:
+  Guarda o codigo-fonte principal, escrito em arquivos .java.
+
+com/github/devgabrielporto07:
+  E o caminho de pastas correspondente ao pacote declarado no codigo:
+  package com.github.devgabrielporto07;
+  O pacote agrupa classes relacionadas e ajuda a organizar seus nomes.
+
+src/main/resources:
+  Guarda recursos que nao sao codigo Java, como arquivos de configuracao ou
+  imagens. A pasta pode estar vazia quando o projeto nao precisa deles.
+
+src/test/java:
+  Guarda os testes automatizados. A pasta pode estar vazia enquanto ainda nao
+  houver testes.
+
+target:
+  E criado pelo Maven e contem resultados gerados, como os arquivos .class em
+  target/classes. Normalmente nao editamos essa pasta: uma nova compilacao pode
+  gerar seu conteudo novamente. O .gitignore do projeto ignora target/.
+
+POM.XML
+-------
+O pom.xml e o arquivo de configuracao principal do Maven. Neste projeto ele
+informa:
+
+- groupId: identificacao do grupo ou autor do projeto.
+- artifactId: nome do artefato/projeto Maven.
+- version: versao atual do projeto.
+- maven.compiler.source e maven.compiler.target: configuracao para compilar
+  usando os recursos da linguagem Java 21.
+- project.build.sourceEncoding: codificacao de texto UTF-8.
+
+O MAVEN NO DIA A DIA
+--------------------
+mvn clean compile
+  clean remove os arquivos gerados anteriormente em target; compile pede ao
+  Maven para compilar o codigo-fonte principal.
+
+java -cp target/classes com.github.devgabrielporto07.Main
+  Executa a classe Main usando os arquivos compilados em target/classes.
+
+No IntelliJ, executar a classe Main pelo botao Run e outra forma de iniciar o
+programa. O IntelliJ usa a configuracao de JDK do projeto para compilar e rodar.
+
+RESPONSABILIDADE DAS CLASSES
+----------------------------
+Main:
+  Coordena o fluxo principal e a interacao pelo terminal. Atualmente le nome,
+  palavra de inicializacao, operacao, quantidade de valores e os numeros.
+
+Nome:
+  Pede o nome, le a entrada e devolve o texto tratado.
+
+Saudacao:
+  Mostra a mensagem de boas-vindas usando o nome.
+
+PalavraInicializacao:
+  Pede a palavra JAVA, permite as tentativas definidas e devolve true ou false
+  para a Main decidir se o programa continua.
+
+ExibicaoCalculadora:
+  Mostra a representacao da calculadora no terminal.
+
+Cores:
+  Reune constantes com os codigos ANSI usados para colorir mensagens.
+
+LogicaCalculadora:
+  E destinada aos calculos. A implementacao das operacoes e a integracao com a
+  Main ainda estao em desenvolvimento.
+
+MODULARIZACAO NESTE PROJETO
+---------------------------
+Modularizar e dividir o programa em partes com responsabilidades especificas.
+Cada classe cuida de uma tarefa, enquanto Main coordena a ordem em que essas
+tarefas acontecem. Por exemplo, Main chama Nome para obter o nome e
+PalavraInicializacao para validar a palavra de acesso.
+
+Essa organizacao permite entender, testar e evoluir cada parte sem colocar
+todo o programa dentro de uma unica classe.
